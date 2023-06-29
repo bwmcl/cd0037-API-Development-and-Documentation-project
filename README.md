@@ -204,10 +204,10 @@ npm start
   "questions": [
     {
       "id": 66,
-      'question':'What does DNA stand for?',
-      'answer':'DeoxyriboNucleic Acid',
-      'difficulty': 4,
-      'category': 1   
+      "question':'What does DNA stand for?",
+      "answer':'DeoxyriboNucleic Acid",
+      "difficulty": 4,
+      "category": 1   
     }
   ],
   "totalQuestions": 100,
@@ -305,8 +305,8 @@ npm start
 
 ```json
 {
-    'previous_questions': [1, 4, 20, 15]
-    'quiz_category': 'current category'
+    "previous_questions": [1, 4, 20, 15]
+    "quiz_category": 'current category'
  }
 ```
 
