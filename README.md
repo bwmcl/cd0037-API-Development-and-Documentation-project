@@ -306,7 +306,7 @@ npm start
 ```json
 {
     "previous_questions": [1, 4, 20, 15]
-    "quiz_category": 'current category'
+    "quiz_category": "current category"
  }
 ```
 
