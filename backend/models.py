@@ -3,8 +3,22 @@ from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-database_name = 'trivia'
-database_path = 'postgresql://{}/{}'.format('localhost:5432', database_name)
+#Setting environment variables for accessing Postgres database.
+os.environ.setdefault('database_user','student')
+os.environ.setdefault('database_password','')
+os.environ.setdefault('database_host','localhost')
+os.environ.setdefault('database_port','5432')
+os.environ.setdefault('database_name','trivia')
+    #Sources: https://stackoverflow.com/questions/5971312/how-to-set-environment-variables-in-python
+    #       : https://stackoverflow.com/questions/4906977/how-can-i-access-environment-variables-in-python
+
+database_path = 'postgresql://{}:{}@{}:{}/{}'.format(os.environ['database_user']
+                                                    ,os.environ['database_password']
+                                                    ,os.environ['database_host']
+                                                    ,os.environ['database_port']
+                                                    ,os.environ['database_name'])
+    #High-level database path structure: 'dialect+driver://username:password@host:port/database'
+    #Source: https://campus.datacamp.com/courses/introduction-to-relational-databases-in-python/applying-filtering-ordering-and-grouping-to-queries?ex=2#:~:text=You%20might%20recall%20from%20Chapter%201%20that%20we,In%20general%2C%20connection%20strings%20have%20the%20form%20%22dialect%2Bdriver%3A%2F%2Fusername%3Apassword%40host%3Aport%2Fdatabase%22
 
 db = SQLAlchemy()
 

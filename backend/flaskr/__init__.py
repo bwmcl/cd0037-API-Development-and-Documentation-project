@@ -204,7 +204,6 @@ def create_app(test_config=None):
             or ((int(response_data['category']) < 0) or (int(response_data['category']) > 5))\
             or ((int(response_data['difficulty']) < 0) or (int(response_data['difficulty'] > 5)))):
             abort(400)
-          
         try:
             #Create Question object (models.py) from request parameters and insert.    
             new_question = Question(question=response_data['question']
@@ -333,6 +332,7 @@ def create_app(test_config=None):
             if quiz_category == 0:
                 #All categories.
                 available_questions = Question.query.filter(Question.id.notin_(previous_questions)).all()
+                    #Note: notin_() is deprecated in later versions (https://stackoverflow.com/questions/26182027/how-to-use-not-in-clause-in-sqlalchemy-orm-query). 
             else:
                 #Specific category.
                 available_questions = Question.query.filter(Question.id.notin_(previous_questions), Question.category==quiz_category).all()
